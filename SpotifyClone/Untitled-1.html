@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Game Prototype</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #252524;
+            color: white;
+        }
+        .game-container {
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            background-color: #d19778;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e68900;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h2>Legends of Veyra</h2>
+
+        <!-- NPC Interaction -->
+        <h3>Talk to the NPC</h3>
+        <button onclick="talkToNPC()">Interact</button>
+        <p class="output" id="npc-output">NPC: Hello, traveler!</p>
+
+        <!-- Procedural Content Generation -->
+        <h3>Generate a New Quest</h3>
+        <button onclick="generateQuest()">Generate Quest</button>
+        <p class="output" id="quest-output">Quest: Awaiting new adventure...</p>
+
+        <!-- Adaptive Difficulty -->
+        <h3>Play a Challenge</h3>
+        <button onclick="playChallenge()">Start Challenge</button>
+        <p class="output" id="difficulty-output">Difficulty: Normal</p>
+    </div>
+
+    <script>
+        // AI-Powered NPC Interaction
+        function talkToNPC() {
+            const responses = [
+                "Hello, traveler! Need a sword?",
+                "Beware of the dark forest, it's full of danger!",
+                "I remember you! Last time, you defeated the bandits.",
+                "Good to see you again! Have you found the lost relic?"
+            ];
+            const npcResponse = responses[Math.floor(Math.random() * responses.length)];
+            document.getElementById("npc-output").innerText = "NPC: " + npcResponse;
+        }
+
+        // AI Procedural Content Generation
+        function generateQuest() {
+            const quests = [
+                "Find the ancient treasure hidden in the mountains.",
+                "Rescue the kidnapped villager from the bandits.",
+                "Gather 10 mystical herbs from the enchanted forest.",
+                "Defeat the cursed knight guarding the castle."
+            ];
+            const newQuest = quests[Math.floor(Math.random() * quests.length)];
+            document.getElementById("quest-output").innerText = "Quest: " + newQuest;
+        }
+
+        // AI Adaptive Difficulty System
+        let playerWins = 0;
+        function playChallenge() {
+            const difficulties = ["Easy", "Normal", "Hard", "Nightmare"];
+            let difficultyLevel = "Normal";
+
+            playerWins++;
+            if (playerWins >= 5) difficultyLevel = "Hard";
+            if (playerWins >= 10) difficultyLevel = "Nightmare";
+
+            document.getElementById("difficulty-output").innerText = "Difficulty: " + difficultyLevel;
+        }
+    </script>
+</body>
+</html>
